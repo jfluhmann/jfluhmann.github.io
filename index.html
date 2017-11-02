@@ -9,132 +9,6 @@
         <meta name="description" content="TEDxSanAngelo Initiative Email Forms">
         <meta name="keywords" content="TEDxSanAngelo Initiative">
         <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/dojo/1.8/dojo/dojo.js"></script>
-<script type="text/javascript">
-    require([
-        "dojo/query",
-        "dojo/dom",
-        "dojo/dom-geometry",
-        "dojo/dom-class",
-        "dojo/dom-style",
-        "dojo/dom-construct",
-        "dijit/focus",
-        "dojo/parser",
-        "dijit/form/DateTextBox",
-        "dojo/NodeList-traverse",
-        "dojo/domReady!"
-    ], function(query, dom, domGeom, domClass, domStyle, domConstruct, focusUtil, parser){
-
-        // Move the focused-field class to the field-group that contains the focused input.
-        var handle = focusUtil.watch("curNode", function(name, oldValue, newValue){
-            var parent = query(newValue).closest('.field-group');
-            if(!domClass.contains(parent, "focused-field")) {
-                query('.focused-field').removeClass('focused-field');
-                parent.addClass('focused-field');
-            }
-        });
-
-        // Add error class to parent wrapper and only show error borders on empty fields in addresses
-        query('.feedback.error').closest('.field-group').addClass('error');
-        query('.addressfield input:text[value=""]').addClass('empty');
-
-        // Focus first input of birthdayfield or phonefield-us when parent wrapper is clicked
-        query('div.subfields').on("click", function(e){
-            var firstInput = query('input', e.target)[0];
-            focusUtil.focus(firstInput);
-        });
-
-        // Prevent image blowout in IE6 since it doesn't support max-width
-        if (domClass.contains(query('html')[0], "ie-lte7")){
-
-            query('img').forEach(function(node){
-                var computedStyle = domStyle.getComputedStyle(node);
-                var w = domGeom.getContentBox(node, computedStyle).w;
-                console.log(w);
-                if(w >= 600){
-                    domStyle.set(node, "width", "600px");
-                }
-            });
-        }
-
-        // Use native checkboxes and radio buttons outside the app
-        dojo.query(".radio input, .checkbox input").removeAttr("data-dojo-type");
-
-        // Render DateTextBoxes
-        parser.parse();
-
-        query('form').on("submit",function(e){
-            var invalidDate = dojo.query('.dijitTextBoxError');
-            if(invalidDate.length){
-                query('.dijitDateTextBox ~ .feedback.error').forEach(domConstruct.destroy);
-                invalidDate.forEach(function(node) {
-                    domConstruct.place('<div class="feedback error"><div class="errorText">Please enter a valid date</div></div>', node, 'after');
-                });
-                e.preventDefault();
-            }
-        });
-
-        twemoji.parse(document.body, { size: 16 });
-    });
-</script>
-
-<script src='https://www.google.com/recaptcha/api.js' async defer></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-    // Still including jQuery to support http://downloads.mailchimp.com/js/jquery.mailcheck.min.js which is included in forms.
-    google.load("jquery", "1.7.1");
-</script>
-
-        <script type="text/javascript" src="/js/mailcheck.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        try {
-
-        var domains = [
-            'aim.com','aol.com','att.net','bellsouth.net','btinternet.com',
-            'charter.net','comcast.com', 'comcast.net','cox.net','earthlink.net',
-            'gmail.com','googlemail.com','icloud.com','mac.com','me.com','msn.com',
-            'optonline.net','optusnet.com.au', 'rocketmail.com','rogers.com','sbcglobal.net',
-            'shaw.ca','sympatico.ca','telus.net','verizon.net','ymail.com'];
-
-        var secondLevelDomains = ['yahoo', 'hotmail', 'mail', 'live', 'outlook', 'gmx'];
-
-        var topLevelDomains = ['com', 'com.au', 'com.tw', 'ca', 'co', 'co.nz', 'co.uk', 'de',
-            'fl', 'fr', 'it', 'ru', 'net', 'org', 'edu', 'gov', 'jp', 'nl', 'kr', 'se', 'eu',
-            'ie', 'co.il', 'us', 'at', 'be', 'dk', 'hk', 'es', 'gr', 'ch', 'no', 'cz',
-            'in', 'net', 'net.au', 'info', 'biz', 'mil', 'co.jp', 'sg', 'hu'];
-
-        $('#MERGE0').on('blur', function() {
-            var submitBtn = $('input.button:submit')[0];
-            if(submitBtn && submitBtn.value == "Subscribe to list"){ // Only show mailcheck warning on english forms.
-                $(this).mailcheck({
-                    domains: domains,
-                    secondLevelDomains: secondLevelDomains,
-                    topLevelDomains: topLevelDomains,
-                    suggested: function(element, suggestion) {
-                        var msg = 'Hmm, did you mean '+suggestion.full+'? If not, carry on.';
-                        if ( $('#MERGE0_mailcheck').length == 0 ){
-                            element.after('<div id="MERGE0_mailcheck" class="feedback">'+msg+'</div>');
-                            element.closest('.field-group').addClass('mailcheck');
-                        }
-                        var enteredDomain = element[0].value.trim().split('@')[1];
-                        ga('send', 'event', 'mailcheck', enteredDomain, suggestion.domain);
-                    },
-                    empty: function(element) {
-                        if ( $('#MERGE0_mailcheck').length > 0 ){
-                            $('#MERGE0_mailcheck').remove();
-                            element.closest('.field-group').removeClass('mailcheck');
-                        }
-                        return;
-                    }
-                });
-            }
-        });
-        } catch(e){ console.log(e); }
-    });
-</script>
-
-        
 	<style type="text/css">/* Forms */
 
 label {
@@ -849,124 +723,54 @@ html[dir="rtl"] .field-shift {
 </div>
 <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
 
-
-
-<form action="https://github.us17.list-manage.com/subscribe/post" method="POST">
-    <input type="hidden" name="u" value="7c57566bb65dab955ae2b1fba">
-    <input type="hidden" name="id" value="d7601d83c7">
-    
-
-    <!-- people should not fill these in and expect good things -->
-    <div class="field-shift" aria-label="Please leave the following three fields empty">
-        <label for="b_name">Name: </label>
-        <input type="text" name="b_name" tabindex="-1" value="" placeholder="Freddie" id="b_name">
-
-        <label for="b_email">Email: </label>
-        <input type="email" name="b_email" tabindex="-1" value="" placeholder="youremail@gmail.com" id="b_email">
-
-        <label for="b_comment">Comment: </label>
-        <textarea name="b_comment" tabindex="-1" placeholder="Please comment" id="b_comment"></textarea>
+<!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:400px; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://github.us17.list-manage.com/subscribe/post?u=7c57566bb65dab955ae2b1fba&amp;id=d7601d83c7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<h2>TEDxSanAngelo Initiative - Subscribe to our mailing list</h2>
+        <p>Please sign up to be notified about planning and organizing for the TEDxSanAngelo initiative.  We will use this list to announce progress and how to get involved.</p>
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<div class="mc-field-group">
+	<label for="mce-FNAME">First Name </label>
+	<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-LNAME">Last Name </label>
+	<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+</div>
+<div class="mc-field-group input-group">
+    <strong>Volunteer </strong>
+    <ul><li><input type="checkbox" value="1" name="group[3263][1]" id="mce-group[3263]-3263-0"><label for="mce-group[3263]-3263-0">I am interested in helping organize</label></li>
+</ul>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Email Format </strong>
+    <ul><li><input type="radio" value="html" name="EMAILTYPE" id="mce-EMAILTYPE-0"><label for="mce-EMAILTYPE-0">HTML</label></li>
+<li><input type="radio" value="text" name="EMAILTYPE" id="mce-EMAILTYPE-1"><label for="mce-EMAILTYPE-1">Plain-text</label></li>
+</ul>
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7c57566bb65dab955ae2b1fba_d7601d83c7" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
     </div>
-
-    <div id="mergeTable" class="mergeTable">
-        
-        
-        <div class="mergeRow dojoDndItem mergeRow-email" id="mergeRow-0">
-            <label for="MERGE0">Email Address <span class="req asterisk">*</span></label>
-            <div class="field-group">
-                <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="">
-                
-                
-            </div>
-            
-        </div>
-        
-        
-        
-        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-1">
-            <label for="MERGE1">First Name</label>
-            <div class="field-group">
-                <input type="text" name="MERGE1" id="MERGE1" size="25" value="">
-                
-                
-            </div>
-            
-        </div>
-        
-        
-        
-        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-2">
-            <label for="MERGE2">Last Name</label>
-            <div class="field-group">
-                <input type="text" name="MERGE2" id="MERGE2" size="25" value="">
-                
-                
-            </div>
-            
-        </div>
-        
-        
-        
-        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-3">
-            <label for="MERGE3">Business/Organization (optional)</label>
-            <div class="field-group">
-                <input type="text" name="MERGE3" id="MERGE3" size="25" value="">
-                
-                
-            </div>
-            
-        </div>
-        
-        
-        
-        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-4">
-            <label for="MERGE4">Title / Role (Optional)</label>
-            <div class="field-group">
-                <input type="text" name="MERGE4" id="MERGE4" size="25" value="">
-                
-                
-            </div>
-            
-        </div>
-        
-        
-
-
-        
-        <div id="interestTable">
-        
-            
-            <div id="mergeRow-100-3263" class="mergeRow dojoDndItem mergeRow-interests-checkboxes">
-                <label>Volunteer</label>
-                <div class="field-group groups">
-                    <ul class="interestgroup_field checkbox-group"> <li class="!margin-bottom--lv2"> <label class="checkbox" for="group_1"><input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="group_1" name="group[3263][1]" value="1"  class="av-checkbox"><span>I am interested in helping organize</span> </label> </li> </ul>
-
-                </div>
-            </div>
-            
-        
-        </div>
-        
-    </div>
-
-    
-    <div class="mergeRow">
-        <label>Preferred format</label>
-        <div class="field-group groups">
-            <div class="interestgroup_field radio-group">
-                <label class="radio" for="EMAILTYPE_HTML"><input type="radio" name="EMAILTYPE" id="EMAILTYPE_HTML" value="html" checked><span>HTML</span></label>
-                <label class="radio" for="EMAILTYPE_TEXT"><input type="radio" name="EMAILTYPE" id="EMAILTYPE_TEXT" value="text" ><span>Plain-text</span></label>
-            </div>
-        </div>
-    </div>
-    
-
-    <div class="submit_container clear">
-        <input type="submit" class="formEmailButton" name="submit" value="Subscribe to list">
-    </div>
-    <input type="hidden" name="ht" value="f59bcc44f4e7eb48143eb7dbe769a08ede0a248b:MTUwOTY1ODcxNS4xMjcx">
-    <input type="hidden" name="mc_signupsource" value="hosted">
 </form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
 
 
 		    </div>
