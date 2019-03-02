@@ -1,0 +1,11 @@
+<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+<script>
+'use strict';
+const context = cast.framework.CastReceiverContext.getInstance();
+context.addCustomMessageListener('urn:x-cast:com.example.castdata', function(customEvent) {
+    if(customEvent.data.type == "message"){
+        document.getElementById("message").innerHTML = customEvent.data.text;
+    }
+});
+context.start();
+</script>
