@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Fluhmann - Senior Technology Leader</title>
+    
+    <!-- Import Fonts (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Import Icons (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- Base & Typography --- */
+        :root {
+            --primary-color: #3498db; /* Professional Blue */
+            --dark-text: #2c3e50;      /* Dark Blue/Grey */
+            --light-text: #555;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --sidebar-bg: #f9f9f9;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--light-text);
+            background-color: var(--bg-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--dark-text);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        h4 {
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-position: outside;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: var(--card-bg);
+            display: flex;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            flex: 1;
+            max-width: 360px;
+            background: var(--sidebar-bg);
+            padding: 2.5rem;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .main-content {
+            flex: 2.5;
+            padding: 2.5rem;
+        }
+
+        /* --- Sidebar Sections --- */
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: var(--dark-text);
+            font-weight: 700;
+        }
+        
+        .contact p {
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact i {
+            margin-right: 12px;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-section {
+            margin-top: 2rem;
+        }
+
+        .sidebar-section h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar-section li {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Specific styling for skills list */
+        .skills li {
+            background-color: #eaf5fd;
+            color: #34495e;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+        
+        /* Styling for publications */
+        .publications p {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        .publications .pub-title {
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        .publications .pub-source {
+            font-style: italic;
+        }
+
+
+        /* --- Main Content Sections --- */
+        .summary-text {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+        
+        .job:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap; /* Wrap for long titles */
+        }
+        
+        .job-header h3 {
+            margin: 0;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--light-text);
+        }
+
+        .job-date {
+            font-style: italic;
+            color: #777;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        
+        .job-subheader {
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-top: 0.5rem;
+        }
+        
+        .job-summary {
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .sidebar {
+                max-width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.3rem; }
+            h3 { font-size: 1.1rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .sidebar, .main-content {
+                padding: 1.5rem;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .job-date {
+                margin-left: 0;
+                margin-top: 0.25rem;
+            }
+
+            h1 {
+                text-align: center;
+            }
+            
+            .sidebar-title {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar">
+
+            <h1>Jeremy Fluhmann</h1>
+            <p class="sidebar-title">Senior Technology Leader</p>
+
+            <div class="contact sidebar-section">
+                <h3>Contact</h3>
+                <p><i class="fa-solid fa-phone"></i> 512-574-8312</p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:fluhmann@gmail.com">fluhmann@gmail.com</a></p>
+                <p><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/jfluhmann" target="_blank">linkedin.com/in/jfluhmann</a></p>
+                <p><i class="fa-brands fa-github"></i> <a href="https://github.com/jfluhmann" target="_blank">github.com/jfluhmann</a></p>
+                <p><i class="fa-solid fa-blog"></i> <a href="http://jfluhmann.blogspot.com/" target="_blank">jfluhmann.blogspot.com</a></p>
+            </div>
+
+            <div class="skills sidebar-section">
+                <h3>Core Competencies</h3>
+                <ul class="skills">
+                    <li>Technology Leadership & Team Building</li>
+                    <li>Cloud Architecture & Strategy (AWS)</li>
+                    <li>DevOps Transformation & Culture</li>
+                    <li>Infrastructure as Code (Terraform, Chef)</li>
+                    <li>High-Availability Platform Operations</li>
+                    <li>Cost Optimization & Analysis</li>
+                    <li>Vendor & Project Management</li>
+                    <li>Kubernetes & Cloud-Native Services</li>
+                </ul>
+            </div>
+
+            <div class="certs sidebar-section">
+                <h3>Selected Certifications</h3>
+                <ul>
+                    <li>Leading with Impact (LinkedIn)</li>
+                    <li>Software Architecture (LinkedIn)</li>
+                    <li>Microsoft Certified: Azure Fundamentals</li>
+                </ul>
+            </div>
+
+            <div class="education sidebar-section">
+                <h3>Education</h3>
+                <h4>University of Mary Hardin-Baylor</h4>
+                <p>BS, Computer Studies</p>
+            </div>
+
+            <div class="recognition sidebar-section">
+                <h3>Leadership & Recognition</h3>
+                <ul>
+                    <li>Organizer, San Angelo Software & Infrastructure Meetup</li>
+                    <li>Fish Camp Namesake, Texas A&M University (2006)</li>
+                    <li>Marketeer of the Month, Virtual Bridges (2011)</li>
+                    <li>President/Past President, TCEA Open Source SIG</li>
+                    <li>Organizing Member, Texas Linux Fest</li>
+                    <li>Conference Chair, The Perl Foundation</li>
+                    <li>President, Association of IT Professionals (UMHB)</li>
+                    <li>Delta Mu Delta, International Honor Society</li>
+                </ul>
+            </div>
+            
+            <!-- ===== NEW SECTION ===== -->
+            <div class="publications sidebar-section">
+                <h3>Thought Leadership & Publications</h3>
+                <p>
+                    <span class="pub-title">Presenter, TCEA Convention (2011)</span><br>
+                    "Reducing Infrastructure Costs with Open Source-based Solutions"
+                </p>
+                <p>
+                    <span class="pub-title">Featured in THE Journal (2011)</span><br>
+                    <span class="pub-source">"Stretching IT Budgets with Open Source and Virtualization"</span>
+                </p>
+            </div>
+            <!-- ===== END NEW SECTION ===== -->
+
+
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
+
+            <section class="summary">
+                <h2>Professional Summary</h2>
+                <p class="summary-text">Senior technology leader with 18+ years of experience building and scaling resilient infrastructure, cloud operations, and DevOps practices.</p>
+                <p class="summary-text">Proven track record building and leading high-performance DevOps teams from the ground up. Specializes in transforming manual operations into automated, well-documented systems that drive operational resilience and team independence.</p>
+                <p class="summary-text">Architects and deploys global production environments, manages complex multi-cloud migrations, and mentors teams to enable scalability and reduce dependencies.</p>
+            </section>
+
+            <section class="experience">
+                <h2>Professional Experience</h2>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>PowerSchool <span class="job-title">| Senior Cloud Operations Engineer II</span></h3>
+                        <span class="job-date">June 2021 – Present</span>
+                    </div>
+                    <p class="job-summary">Senior technical leader for a distributed, multi-region AWS platform. Ensured 100% platform availability during peak periods and provided strategic guidance for infrastructure modernization. Drove platform expansion into new international markets (AWS Canada). Created operational documentation and provided technical mentorship to reduce dependencies and enhance team scalability.</p>
+                    <ul>
+                        <li><strong>Strategically led the "from ground up" build and launch of the complete AWS Canada production environment</strong>, adapting complex Terraform/Chef automation for a new international region and coordinating the full-lifecycle infrastructure launch (VPCs, Aurora clusters, ECS).</li>
+                        <li><strong>Orchestrated a critical MySQL 5.7 to 8.0 Aurora migration across 9 production clusters</strong>, mitigating all application compatibility risk by developing and executing an automated performance testing methodology and rollback procedures.</li>
+                        <li>Led a cross-team Angular upgrade from v10 to v14 for a mission-critical UI, modernizing authentication libraries (MSALv2) for production deployment.</li>
+                        <li>Implemented TLS 1.2 security hardening across all EKS load balancers and CloudFront distributions.</li>
+                        <li>Standardized backup retention policies and eliminated technical debt across Aurora RDS and DocumentDB clusters.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>TimeClock Plus (TCP)</h3>
+                        <span class="job-date">(Two Stints: 2016-2020, 2020-2021)</span>
+                    </div>
+
+                    <h4 class="job-subheader">Senior Software Developer <span class="job-date">(June 2020 – June 2021)</span></h4>
+                    <p class="job-subheader">(Promoted to Member of Technical Staff prior to departure)</p>
+                    <ul>
+                        <li>Engaged with developers on infrastructure automation, deployment, and proof-of-concept projects.</li>
+                        <li>Provided technical architecture guidance and contributed to Terraform infrastructure expansion.</li>
+                    </ul>
+
+                    <h4 class="job-subheader">Senior DevOps Engineer <span class="job-date">(June 2016 – February 2020)</span></h4>
+                    <p class="job-summary">**Recruited, built, and led the company's first-ever DevOps team of five engineers from the ground up.** Directed the team's technical output and roadmap, establishing a culture focused on **platform reliability, operational excellence, and automation**.</p>
+                    <ul>
+                        <li><strong>Established the core DevOps practice</strong> by personally **architecting the Chef infrastructure**, authoring all original cookbooks, and creating comprehensive operational documentation.</li>
+                        <li><strong>Delivered an 80% reduction in customer provisioning time</strong> by architecting and implementing a new SQS-based automated queuing system.</li>
+                        <li>Engineered a new Nginx solution to solve a complex cross-environment customer routing problem.</li>
+                        <li>Consolidated logging with Logstash/Filebeat and introduced Sentry for operations monitoring.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Western Shamrock Corporation <span class="job-title">| Senior Software Engineer</span></h3>
+                        <span class="job-date">February 2020 – June 2020</span>
+                    </div>
+                    <ul>
+                        <li>Developed new projects using Python and PostgreSQL.</li>
+                        <li>Modernized development workflows by implementing GitLab.</li>
+                        <li>Designed and deployed a real-time store transfer system using RabbitMQ.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Talligent (Acquired by Verizon) <span class="job-title">| Customer Success & Support Manager</span></h3>
+                        <span class="job-date">February 2015 – September 2016</span>
+                    </div>
+                    <ul>
+                        <li>Ensured customer success with deployment and configuration of OpenBook cloud management software via Heat templates, Fuel plugins, Puppet, Chef, and Ansible.</li>
+                        <li>Architected an OpenBook solution for a Fortune 500 client using Kafka, Logstash, and Ceilometer across multi-OpenStack environments.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Spredfast <span class="job-title">| Operations Engineer</span></h3>
+                        <span class="job-date">September 2012 – December 2014</span>
+                    </div>
+                     <ul>
+                        <li>Supported a 24/7 highly available SaaS platform in AWS (Apache, Nginx, MySQL, Cassandra, ElasticSearch).</li>
+                        <li>Managed software deployments using Ansible, Rundeck, and custom scripts.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Virtual Bridges <span class="job-title">| Solutions Engineer</span></h3>
+                        <span class="job-date">July 2_011 – December 2012</span>
+                    </div>
+                    <ul>
+                        <li>Served as the technical point person for pre- and post-sales engagements at a VDI startup.</li>
+                        <li>Developed automated deployment processes for OS and product installs using Bash, preseed, kickstart, and PXE.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Winters Independent School District <span class="job-title">| Director Of Technology</span></h3>
+                        <span class="job-date">August 2009 – July 2011</span>
+                    </div>
+                    <ul>
+                        <li><strong>Delivered over $750,000 in cost savings</strong> by architecting, implementing, and managing a district-wide virtual desktop initiative.</li>
+                        <li><strong>Saved $35,000 against the lowest vendor proposal</strong> by leading the successful in-house implementation of a new Voice over IP phone system.</li>
+                        <li>Oversaw all aspects of district technology, including personnel, purchasing, and server/network infrastructure.</li>
+                    </ul>
+                </div>
+
+            </section>
+            
+            <section class="ventures">
+                <h2>Entrepreneurial Ventures</h2>
+
+                 <div class="job">
+                    <div class="job-header">
+                        <h3>Rural Capital, LLC <span class="job-title">| Founder</span></h3>
+                        <span class="job-date">November 2021 – Present</span>
+                    </div>
+                    <p>Holding company for multiple entrepreneurial ventures, including software development and community event services.</p>
+                </div>
+                
+                 <div class="job">
+                    <div class="job-header">
+                        <h3>Rural Cinema Productions <span class="job-title">| Founder</span></h3>
+                        <span class="job-date">June 2025 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Founded and operate a professional outdoor movie experience company for rural communities, organizing the successful 2025 Mountain Creek Summer Movie Series.</li>
+                        <li>Engineered a secondary audio solution via FM broadcast, fully synced with movie presentations.</li>
+                    </ul>
+                </div>
+                
+                 <div class="job">
+                    <div class="job-header">
+                        <h3>GigAgent / Findurance <span class="job-title">| Founder & Developer</span></h3>
+                    </div>
+                    <p>Currently developing MVPs for two SaaS platforms: `GigAgent` (a booking platform for indie bands) and `Findurance` (a budget forecasting app).</p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
