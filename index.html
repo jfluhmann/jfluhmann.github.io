@@ -174,6 +174,22 @@
             font-style: italic;
         }
 
+        /* NEW STYLING for Recognition List */
+        .recognition-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px; /* Add a bit more space */
+        }
+        
+        .recognition-list i {
+            margin-right: 10px;
+            margin-top: 4px; /* Align icon nicely with first line of text */
+            color: var(--primary-color);
+            width: 16px; /* Give it a fixed width */
+            text-align: center;
+        }
+        /* END NEW STYLING */
+
 
         /* --- Main Content Sections --- */
         .summary-text {
@@ -323,15 +339,15 @@
 
             <div class="recognition sidebar-section">
                 <h3>Leadership & Recognition</h3>
-                <ul>
-                    <li>Organizer, San Angelo Software & Infrastructure Meetup</li>
-                    <li>Fish Camp Namesake, Texas A&M University (2006)</li>
-                    <li>Marketeer of the Month, Virtual Bridges (2011)</li>
-                    <li>President/Past President, TCEA Open Source SIG</li>
-                    <li>Organizing Member, Texas Linux Fest</li>
-                    <li>Conference Chair, The Perl Foundation</li>
-                    <li>President, Association of IT Professionals (UMHB)</li>
-                    <li>Delta Mu Delta, International Honor Society</li>
+                <ul class="recognition-list"> <!-- Added class -->
+                    <li><i class="fa-solid fa-users"></i>Organizer, San Angelo Software & Infrastructure Meetup</li>
+                    <li><i class="fa-solid fa-award"></i>Fish Camp Namesake, Texas A&M University (2006)</li>
+                    <li><i class="fa-solid fa-star"></i>Marketeer of the Month, Virtual Bridges (2011)</li>
+                    <li><i class="fa-solid fa-sitemap"></i>President/Past President, TCEA Open Source SIG</li>
+                    <li><i class="fa-solid fa-users"></i>Organizing Member, Texas Linux Fest</li>
+                    <li><i class="fa-solid fa-sitemap"></i>Conference Chair, The Perl Foundation</li>
+                    <li><i class="fa-solid fa-graduation-cap"></i>President, Association of IT Professionals (UMHB)</li>
+                    <li><i class="fa-solid fa-shield-halved"></i>Delta Mu Delta, International Honor Society</li>
                 </ul>
             </div>
             
